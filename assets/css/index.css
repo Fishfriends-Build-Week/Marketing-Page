@@ -159,6 +159,23 @@ img {
 main {
   width: 100vw;
   height: 100vh;
+  scroll-behavior: smooth;
+}
+.desktop {
+  display: initial;
+}
+@media (max-width: 500px) {
+  .desktop {
+    display: none;
+  }
+}
+.mobile {
+  display: none;
+}
+@media (max-width: 500px) {
+  .mobile {
+    display: initial;
+  }
 }
 .fullscreen-image {
   width: 100vw;
@@ -224,4 +241,13 @@ main {
 }
 .content-app-button:hover {
   background: #006acc;
+}
+@media (max-width: 800px) {
+  .content {
+    font-size: 1.9rem;
+  }
+  .content-app-button {
+    padding: 1% 4%;
+    font-size: 1.5rem;
+  }
 }
