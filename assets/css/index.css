@@ -138,6 +138,14 @@ table {
 .flex {
   display: flex;
 }
+@keyframes fadeIntoView {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 *::before,
 *,
 *::after {
@@ -193,8 +201,26 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-flow: column;
   width: 70%;
   margin: 0 auto;
   height: 100%;
   font-size: 3rem;
+}
+.content-fade-animation {
+  animation: fadeIntoView 2s 0s linear forwards;
+  text-align: center;
+}
+.content-app-button {
+  margin-top: 3%;
+  cursor: pointer;
+  background: #0084ff;
+  border-radius: 10px;
+  padding: 1% 2%;
+  font-size: 2rem;
+  opacity: 0;
+  animation: fadeIntoView 2s 2.1s linear forwards;
+}
+.content-app-button:hover {
+  background: #006acc;
 }

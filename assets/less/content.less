@@ -3,8 +3,29 @@
   .flex;
   justify-content: center;
   align-items: center;
+  flex-flow: column;
   width: 70%;
   margin: 0 auto;
   height: 100%;
   font-size: 3rem;
+
+  &-fade-animation {
+    .fadeIn();
+    text-align: center;
+  }
+
+  &-app-button {
+    margin-top: 3%;
+    cursor: pointer;
+    background: @blue;
+    border-radius: 10px;
+    padding: 1% 2%;
+    font-size: 2rem;
+    opacity: 0;
+    .fadeIn(2.1s);
+
+    &:hover {
+      background: darken(@blue, 10%);
+    }
+  }
 }
