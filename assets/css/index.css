@@ -234,13 +234,18 @@ main {
   cursor: pointer;
   background: #0084ff;
   border-radius: 10px;
-  padding: 1% 2%;
+  padding: 1% 4%;
   font-size: 2rem;
   opacity: 0;
   animation: fadeIntoView 2s 2.1s linear forwards;
 }
 .content-app-button:hover {
   background: #006acc;
+}
+.content-buttons {
+  display: flex;
+  width: 50%;
+  justify-content: space-evenly;
 }
 @media (max-width: 800px) {
   .content {

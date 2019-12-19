@@ -19,7 +19,7 @@
     cursor: pointer;
     background: @blue;
     border-radius: 10px;
-    padding: 1% 2%;
+    padding: 1% 4%;
     font-size: 2rem;
     opacity: 0;
     .fadeIn(2.1s);
@@ -27,6 +27,12 @@
     &:hover {
       background: darken(@blue, 10%);
     }
+  }
+
+  &-buttons {
+    .flex;
+    width: 50%;
+    justify-content: space-evenly;
   }
 
   @media @tablet {
