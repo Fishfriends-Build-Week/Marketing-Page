@@ -1,5 +1,7 @@
-*::before, *, *::after {
-  font-size: 62.50%;
+*::before,
+*,
+*::after {
+  font-size: 62.5%;
   box-sizing: border-box;
 }
 
@@ -10,4 +12,21 @@ img {
 
 main {
   .fullscreen;
+  scroll-behavior: smooth;
+}
+
+.desktop {
+  display: initial;
+
+  @media @mobile {
+    display: none;
+  }
+}
+
+.mobile {
+  display: none;
+
+  @media @mobile {
+    display: initial;
+  }
 }
