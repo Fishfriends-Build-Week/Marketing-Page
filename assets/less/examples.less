@@ -1,0 +1,37 @@
+.examples {
+  background: white;
+
+  &-header {
+    font-size: 2rem;
+    text-align: center;
+    padding-top: 2%;
+    font-weight: bolder;
+    border-bottom: 1px solid @blue;
+    padding-bottom: 2%;
+    width: 85%;
+    margin: 0 auto;
+    color: @blue;
+  }
+
+  &-flex-container {
+    .flex;
+    width: 100%;
+    justify-content: space-evenly;
+    padding: 5% 0;
+    flex-flow: wrap;
+  }
+
+  &-image-container {
+    width: 100%;
+    img {
+      border-radius: 10px;
+    }
+  }
+
+  &-product {
+    width: 25%;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    height: 99%;
+  }
+}
