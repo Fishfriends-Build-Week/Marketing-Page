@@ -146,6 +146,14 @@ table {
     opacity: 1;
   }
 }
+@keyframes slideIntoView {
+  from {
+    transform: translateY(-500px);
+  }
+  to {
+    transform: translateY(5vh);
+  }
+}
 *::before,
 *,
 *::after {
@@ -233,6 +241,9 @@ a:active {
   display: flex;
 }
 @media (max-width: 500px) {
+  .navigation {
+    flex-flow: wrap;
+  }
   .navigation-logo-text {
     height: 5vh;
     padding: 1vh 0;
@@ -244,6 +255,25 @@ a:active {
   .navigation-logo-text:hover {
     background: rgba(64, 64, 64, 0.5);
     cursor: pointer;
+  }
+  .navigation-flex-container {
+    width: 100%;
+    flex-flow: column;
+    background: rgba(0, 0, 0, 0.5);
+    animation: slideIntoView 0.25s linear alternate forwards;
+    position: absolute;
+  }
+  .navigation-item {
+    width: 100%;
+    border-bottom: 1px solid white;
+    text-align: center;
+    height: 3vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .navigation a {
+    width: 100%;
   }
 }
 .content {

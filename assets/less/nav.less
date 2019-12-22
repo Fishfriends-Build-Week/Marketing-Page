@@ -22,17 +22,42 @@
   }
 
   @media @mobile {
+    flex-flow: wrap;
     &-logo-text {
       height: 5vh;
       padding: 1vh 0;
       width: 100%;
       text-align: center;
-      background: rgba(0, 0, 0, .5);
+      background: rgba(0, 0, 0, 0.5);
       border-bottom: 1px solid white;
       &:hover {
-        background: lighten(rgba(0, 0, 0, .5), 25%);
+        background: lighten(rgba(0, 0, 0, 0.5), 25%);
         cursor: pointer;
       }
+    }
+
+    &-flex-container {
+      width: 100%;
+      flex-flow: column;
+      background: rgba(0, 0, 0, 0.5);
+      animation: slideIntoView .25s linear alternate forwards;
+      position: absolute;
+      &.hide {
+      }
+    }
+
+    &-item {
+      width: 100%;
+      border-bottom: 1px solid white;
+      text-align: center;
+      height: 3vh;
+      .flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    a {
+      width: 100%;
     }
   }
 }
