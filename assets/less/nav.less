@@ -20,4 +20,19 @@
     font-size: 0.8rem;
     .flex;
   }
+
+  @media @mobile {
+    &-logo-text {
+      height: 5vh;
+      padding: 1vh 0;
+      width: 100%;
+      text-align: center;
+      background: rgba(0, 0, 0, .5);
+      border-bottom: 1px solid white;
+      &:hover {
+        background: lighten(rgba(0, 0, 0, .5), 25%);
+        cursor: pointer;
+      }
+    }
+  }
 }

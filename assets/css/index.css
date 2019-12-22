@@ -232,6 +232,20 @@ a:active {
   font-size: 0.8rem;
   display: flex;
 }
+@media (max-width: 500px) {
+  .navigation-logo-text {
+    height: 5vh;
+    padding: 1vh 0;
+    width: 100%;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid white;
+  }
+  .navigation-logo-text:hover {
+    background: rgba(64, 64, 64, 0.5);
+    cursor: pointer;
+  }
+}
 .content {
   color: white;
   display: flex;
