@@ -9,3 +9,12 @@ navigationContainer.addEventListener("click", function(e) {
   }
 });
 
+const devLink = document.createElement('a');
+const devContent = document.createElement('section');
+devContent.textContent = 'Developers';
+devContent.classList = 'navigation-item';
+devLink.appendChild(devContent);
+devLink.href='#';
+
+const navLinkContainer = document.querySelector('.navigation-flex-container');
+navLinkContainer.prepend(devLink);
