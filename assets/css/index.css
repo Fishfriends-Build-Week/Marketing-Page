@@ -202,6 +202,45 @@ a:active {
     display: none !important;
   }
 }
+.modal {
+  width: 100vw;
+  height: 100vh;
+  z-index: -5;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal h2 {
+  text-align: center;
+  font-size: 1.75rem;
+  margin-bottom: 2%;
+  font-weight: bolder;
+}
+.modal-developer {
+  font-size: 1rem;
+  margin-bottom: 1%;
+  text-align: center;
+}
+.modal-backdrop {
+  background: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: -5;
+}
+.modal-content {
+  width: 50%;
+  height: auto;
+  background: white;
+  border-radius: 10px;
+  padding: 3%;
+  position: fixed;
+  z-index: -5;
+}
+.modal-on-top {
+  z-index: 1000;
+}
 .fullscreen-image {
   width: 100vw;
   height: 100vh;
