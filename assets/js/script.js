@@ -1,7 +1,8 @@
 let navigationMenuVisibility = false;
+let modalVisibility = false;
 
 const getDevs = () => ({
-  "React I": [
+  "React I Devs": [
     {
       name: "Aaron Doran"
     },
@@ -9,7 +10,7 @@ const getDevs = () => ({
       name: "Vitaliy Mikhaylyuk"
     }
   ],
-  "React II": [
+  "React II Devs": [
     {
       name: "Ronald Goodwin"
     },
@@ -17,7 +18,7 @@ const getDevs = () => ({
       name: "Paul Edwards"
     }
   ],
-  "Node API": [
+  "Node Devs": [
     {
       name: "Christopher Cruz"
     },
@@ -25,7 +26,7 @@ const getDevs = () => ({
       name: "Iris Tristan Jitomo"
     }
   ],
-  "Web UI": [
+  "Web UI Devs": [
     {
       name: "Victor Tran"
     }
@@ -41,32 +42,64 @@ navigationContainer.addEventListener("click", function() {
   }
 });
 
-const devLink = document.createElement("a");
-const devContent = document.createElement("section");
-devContent.textContent = "Developers";
-devContent.classList = "navigation-item";
-devLink.appendChild(devContent);
+const createDevLink = () => {
+  const devLink = document.createElement("a");
+  const devContent = document.createElement("section");
+  const navLinkContainer = document.querySelector(".navigation-flex-container");
 
-const navLinkContainer = document.querySelector(".navigation-flex-container");
-navLinkContainer.prepend(devLink);
+  devContent.textContent = "Developers";
+  devContent.classList = "navigation-item";
+  devLink.appendChild(devContent);
+  navLinkContainer.prepend(devLink);
 
-devLink.addEventListener("click", function(e) {
-  // create modal and cast overlay
-  const modalContent = document.querySelector(".modal-content");
-  const devObject = getDevs();
-
-  // go through each title => React I, React II... etc
-
-  for (let [title, listOfDevs] of Object.entries(devObject)) {
-    const sectionTitle = document.createElement("h2");
-    sectionTitle.textContent = title;
-
-    listOfDevs.forEach(({ name }) => {
+  devLink.addEventListener("click", function(e) {
+    // create modal and cast overlay
+    const modal = document.querySelector(".modal");
+    const modalContent = document.querySelector(".modal-content");
+    const backdrop = document.querySelector(".modal-backdrop");
+    const devObject = getDevs();
+  
+    modalVisibility = true;
+    // go through each title => React I, React II... etc
+  
+    for (let [title, listOfDevs] of Object.entries(devObject)) {
       const devSection = document.createElement("section");
-      devSection.textContent = name;
-      sectionTitle.appendChild(devSection);
-    });
+      const sectionTitle = document.createElement("h2");
+      sectionTitle.textContent = title;
+      devSection.appendChild(sectionTitle);
+  
+      listOfDevs.forEach(({ name }) => {
+        const developerName = document.createElement("section");
+        developerName.textContent = name;
+        developerName.classList = "modal-developer";
+        devSection.appendChild(developerName);
+      });
+      modalContent.appendChild(devSection);
+    }
+    
+    if (modalVisibility) {
+      [modal, modalContent, backdrop].forEach(htmlElement =>
+        htmlElement.classList.add("modal-on-top")
+      );
+    }
+  
+    backdrop.addEventListener('click', function(e) {
+      modalVisibility = false;
+      
+      if (!modalVisibility) {
+        [modal, modalContent, backdrop].forEach(htmlElement =>
+          htmlElement.classList.remove("modal-on-top")
+        );
+        while (modalContent.firstChild) {
+          modalContent.removeChild(modalContent.firstChild);
+        }
+      }
 
-    modalContent.appendChild(sectionTitle);
-  }
-});
+    })
+  });
+  
+
+};
+
+createDevLink();
+
