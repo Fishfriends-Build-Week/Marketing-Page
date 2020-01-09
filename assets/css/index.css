@@ -302,6 +302,9 @@ a:active {
     animation: slideIntoView 0.25s linear alternate forwards;
     position: absolute;
   }
+  .navigation-flex-container > a {
+    cursor: pointer;
+  }
   .navigation-item {
     width: 100%;
     border-bottom: 1px solid white;
