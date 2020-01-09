@@ -1,6 +1,3 @@
-let navigationMenuVisibility = false;
-let modalVisibility = false;
-
 const getDevs = () => ({
   "React I Devs": [
     {
@@ -33,6 +30,8 @@ const getDevs = () => ({
   ]
 });
 
+let navigationMenuVisibility = false;
+
 const navigationContainer = document.querySelector(".navigation");
 navigationContainer.addEventListener("click", function() {
   if (window.innerWidth <= 500) {
@@ -43,63 +42,73 @@ navigationContainer.addEventListener("click", function() {
 });
 
 const createDevLink = () => {
+  let modalVisibility = false;
+  // navigation variables
   const devLink = document.createElement("a");
   const devContent = document.createElement("section");
   const navLinkContainer = document.querySelector(".navigation-flex-container");
+
+  // modal variables
+  const modal = document.querySelector(".modal");
+  const modalContent = document.querySelector(".modal-content");
+  const backdrop = document.querySelector(".modal-backdrop");
+  const devObject = getDevs();
 
   devContent.textContent = "Developers";
   devContent.classList = "navigation-item";
   devLink.appendChild(devContent);
   navLinkContainer.prepend(devLink);
 
-  devLink.addEventListener("click", function(e) {
-    // create modal and cast overlay
-    const modal = document.querySelector(".modal");
-    const modalContent = document.querySelector(".modal-content");
-    const backdrop = document.querySelector(".modal-backdrop");
-    const devObject = getDevs();
-  
+  const clickTouchHandler = e => {
+    e.stopPropagation();
     modalVisibility = true;
-    // go through each title => React I, React II... etc
-  
-    for (let [title, listOfDevs] of Object.entries(devObject)) {
-      const devSection = document.createElement("section");
-      const sectionTitle = document.createElement("h2");
-      sectionTitle.textContent = title;
-      devSection.appendChild(sectionTitle);
-  
-      listOfDevs.forEach(({ name }) => {
-        const developerName = document.createElement("section");
-        developerName.textContent = name;
-        developerName.classList = "modal-developer";
-        devSection.appendChild(developerName);
-      });
-      modalContent.appendChild(devSection);
-    }
-    
-    if (modalVisibility) {
-      [modal, modalContent, backdrop].forEach(htmlElement =>
-        htmlElement.classList.add("modal-on-top")
-      );
-    }
-  
-    backdrop.addEventListener('click', function(e) {
-      modalVisibility = false;
-      
-      if (!modalVisibility) {
-        [modal, modalContent, backdrop].forEach(htmlElement =>
-          htmlElement.classList.remove("modal-on-top")
-        );
-        while (modalContent.firstChild) {
-          modalContent.removeChild(modalContent.firstChild);
-        }
+    const createDevSections = () => {
+      for (let [title, listOfDevs] of Object.entries(devObject)) {
+        const devSection = document.createElement("section");
+        const sectionTitle = document.createElement("h2");
+        sectionTitle.textContent = title;
+        devSection.appendChild(sectionTitle);
+
+        listOfDevs.forEach(({ name }) => {
+          const developerName = document.createElement("section");
+          developerName.textContent = name;
+          developerName.classList = "modal-developer";
+          devSection.appendChild(developerName);
+        });
+        modalContent.appendChild(devSection);
       }
+    };
 
-    })
-  });
+    const toggleModalVisibility = action => {
+      switch (action) {
+        case "add":
+          [modal, modalContent, backdrop].forEach(htmlElement =>
+            htmlElement.classList.add("modal-on-top")
+          );
+          break;
+        case "remove":
+          [modal, modalContent, backdrop].forEach(htmlElement =>
+            htmlElement.classList.remove("modal-on-top")
+          );
+        default:
+          return;
+      }
+    };
+
+    createDevSections();
+    toggleModalVisibility(modalVisibility ? "add" : "remove");
+
+    backdrop.addEventListener("click", function(e) {
+      modalVisibility = false;
+      toggleModalVisibility(modalVisibility ? "add" : "remove");
+      while (modalContent.firstChild) {
+        modalContent.removeChild(modalContent.firstChild);
+      }
+    });
+  };
+
+  devLink.addEventListener("click", clickTouchHandler);
   
-
 };
 
 createDevLink();
-
