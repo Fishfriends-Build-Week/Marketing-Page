@@ -19,6 +19,10 @@
     align-items: center;
     font-size: 0.8rem;
     .flex;
+
+    & > a {
+      cursor: pointer;
+    }
   }
 
   @media @mobile {
@@ -42,10 +46,6 @@
       background: rgba(0, 0, 0, 0.5);
       animation: slideIntoView 0.25s linear alternate forwards;
       position: absolute;
-
-      & > a {
-        cursor: pointer;
-      }
     }
 
     &-item {

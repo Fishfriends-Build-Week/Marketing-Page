@@ -279,6 +279,9 @@ a:active {
   font-size: 0.8rem;
   display: flex;
 }
+.navigation-flex-container > a {
+  cursor: pointer;
+}
 @media (max-width: 500px) {
   .navigation {
     flex-flow: wrap;
@@ -301,9 +304,6 @@ a:active {
     background: rgba(0, 0, 0, 0.5);
     animation: slideIntoView 0.25s linear alternate forwards;
     position: absolute;
-  }
-  .navigation-flex-container > a {
-    cursor: pointer;
   }
   .navigation-item {
     width: 100%;
