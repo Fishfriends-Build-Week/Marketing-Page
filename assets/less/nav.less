@@ -1,0 +1,65 @@
+.navigation {
+  width: 100%;
+  color: white;
+  &,
+  &-flex-container {
+    .flex;
+  }
+  justify-content: space-between;
+
+  &-logo-text {
+    padding: 0.5%;
+    font-size: 1.3rem;
+    width: 25%;
+  }
+
+  &-flex-container {
+    width: 25%;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 0.8rem;
+    .flex;
+
+    & > a {
+      cursor: pointer;
+    }
+  }
+
+  @media @mobile {
+    flex-flow: wrap;
+    &-logo-text {
+      height: 5vh;
+      padding: 1vh 0;
+      width: 100%;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.5);
+      border-bottom: 1px solid white;
+      &:hover {
+        background: lighten(rgba(0, 0, 0, 0.5), 25%);
+        cursor: pointer;
+      }
+    }
+
+    &-flex-container {
+      width: 100%;
+      flex-flow: column;
+      background: rgba(0, 0, 0, 0.5);
+      animation: slideIntoView 0.25s linear alternate forwards;
+      position: absolute;
+    }
+
+    &-item {
+      width: 100%;
+      border-bottom: 1px solid white;
+      text-align: center;
+      height: 3vh;
+      .flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    a {
+      width: 100%;
+    }
+  }
+}

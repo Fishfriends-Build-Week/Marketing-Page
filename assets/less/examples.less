@@ -1,0 +1,61 @@
+.examples {
+  background: white;
+
+  &-header {
+    font-size: 2rem;
+    text-align: center;
+    padding-top: 2%;
+    font-weight: bolder;
+    border-bottom: 1px solid @blue;
+    padding-bottom: 2%;
+    width: 85%;
+    margin: 0 auto;
+    color: @blue;
+  }
+
+  &-flex-container {
+    .flex;
+    width: 100%;
+    justify-content: space-evenly;
+    padding: 5% 0;
+    flex-flow: wrap;
+  }
+
+  &-image-container {
+    width: 100%;
+    img {
+      border-radius: 10px;
+    }
+  }
+
+  &-product {
+    width: 25%;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    height: 99%;
+  }
+
+  @media @mobile {
+    &-header {
+      font-size: 1.2rem;
+    }
+
+    &-flex-container {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      justify-content: flex-start;
+    }
+
+    &-product {
+      flex: 0 0 auto;
+      width: 50%;
+      padding-left: 5%;
+
+      &:last-child {
+        padding-right: 5%;
+        padding-left: 0;
+        margin-left: 5%;
+      }
+    }
+  }
+}
